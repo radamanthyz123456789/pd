@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Services</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
+    <link href='http://fonts.googleapis.com/css?family=Condiment' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <script src="js/jquery-1.7.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+	<!--[if lt IE 8]>
+       <div style=' clear: both; text-align:center; position: relative;'>
+         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+      </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+   		<script type="text/javascript" src="js/html5.js"></script>
+    	<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
+	<![endif]-->
+</head>
+<body>
+  <div class="main">
+  <!--==============================header=================================-->
+    <header>
+        <h1><a href="index.html"><img src="images/logo.png" alt=""></a></h1>
+        <div class="form-search">
+            <form id="form-search" method="post">
+              <input type="text" value="Type here..." onBlur="if(this.value=='') this.value='Type here...'" onFocus="if(this.value =='Type here...' ) this.value=''"  />
+              <a href="#" onClick="document.getElementById('form-search').submit()" class="search_button"></a>
+            </form>
+        </div>
+        <div class="clear"></div>
+        <nav class="box-shadow">
+            <div>
+                <ul class="menu">
+                    <li class="home-page"><a href="index.html"><span></span></a></li>
+                    <li><a href="about.html">NOSOTROS</a></li>
+                    <li class="current"><a href="services.html">SERVICIOS</a></li>
+                     <li><a href="contacts.html">Contacts</a></li>
+                   
+                    
+                </ul>
+                <div class="social-icons">
+                    <span>Follow us:</span>
+                    <a href="#" class="icon-3"></a>
+                    <a href="#" class="icon-2"></a>
+                    <a href="#" class="icon-1"></a>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </nav>
+    </header>
+  <!--==============================content================================-->
+    <section id="content"><div class="ic"></div>
+        <div class="container_12">
+          <div class="grid_12">
+            <div class="wrap pad-3">
+                <div class="block-5">
+                    <h3>lista de votantes</h3>
+                     <ul class="list-1">
+                    	<li><a href="#">lista 1</a></li>
+                        <li><a href="#">lista 2</a></li>
+                    </ul>
+                </div>
+                <div class="block-6">
+                    <h3 class="p6"> LISTA DE LOS VOTANTES <strong> se muestran todos los archivos</strong></h3>
+                    <div class="caja">
+                      <?php
+                      if ($dir= opendir($directorio)) {
+                        while ($archivo=readdir($dir)) {
+                          if ($archivo !='.' && $archivo='..') {
+                            
+                          echo "Archivo" <strong>$archivo</strong></br>;
+                          }
+                        }
+                      }
+
+                      ?>
+
+                    </div>
+        
+                    <a href="#" class="button">More</a>
+                </div>
+
+    
+
+                    <div class="block-6">
+                                      <div  class="example">
+                                        <div id="drop_zone">Drop files here</div>
+                    <output id="list"></output>
+
+                    <script>
+                      function handleFileSelect(evt) {
+                        evt.stopPropagation();
+                        evt.preventDefault();
+
+                        var files = evt.dataTransfer.files; // FileList object.
+
+                        // files is a FileList of File objects. List some properties.
+                        var output = [];
+                        for (var i = 0, f; f = files[i]; i++) {
+                          output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                                      f.size, ' bytes, last modified: ',
+                                      f.lastModifiedDate.toLocaleDateString(), '</li>');
+                        }
+                        document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+                      }
+
+                      function handleDragOver(evt) {
+                        evt.stopPropagation();
+                        evt.preventDefault();
+                        evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+                      }
+
+                      // Setup the dnd listeners.
+                      var dropZone = document.getElementById('drop_zone');
+                      dropZone.addEventListener('dragover', handleDragOver, false);
+                      dropZone.addEventListener('drop', handleFileSelect, false);
+                    </script>
+                  </div>
+                  </div>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+       
+    </section>
+  </div>
+<!--==============================footer=================================-->
+    <footer>
+        <p>Docente : ING. Manuel Ibarra</p>
+        <p> © Michi </p>
+        <p>Desarrollo de Sotware</p>
+    </footer>
+</body>
+</html>
